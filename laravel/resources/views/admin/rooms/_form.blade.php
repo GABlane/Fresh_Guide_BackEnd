@@ -1,12 +1,7 @@
-{{--
-    Shared form partial for rooms.
-    Expects: $floors (with building), $facilities, $room (nullable)
---}}
-
-{{-- Floor --}}
-<div class="mb-3">
-    <label class="form-label">Floor <span class="text-danger">*</span></label>
-    <select name="floor_id" class="form-select @error('floor_id') is-invalid @enderror" required>
+{{-- Expects: $floors (with building), $facilities, $room (nullable) --}}
+<div class="field">
+    <label>Floor <span class="req">*</span></label>
+    <select name="floor_id" class="{{ $errors->has('floor_id') ? 'err' : '' }}" required>
         <option value="">— select floor —</option>
         @foreach($floors as $floor)
             <option value="{{ $floor->id }}"
@@ -15,31 +10,28 @@
             </option>
         @endforeach
     </select>
-    @error('floor_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    @error('floor_id') <div class="field-err">{{ $message }}</div> @enderror
 </div>
 
-<div class="row">
-    {{-- Code --}}
-    <div class="col-md-4 mb-3">
-        <label class="form-label">Code <span class="text-danger">*</span></label>
-        <input type="text" name="code" class="form-control @error('code') is-invalid @enderror"
-               value="{{ old('code', $room->code ?? '') }}" placeholder="e.g. R201" required>
-        @error('code') <div class="invalid-feedback">{{ $message }}</div> @enderror
+<div class="form-row">
+    <div class="field">
+        <label>Code <span class="req">*</span></label>
+        <input type="text" name="code" value="{{ old('code', $room->code ?? '') }}"
+               placeholder="e.g. R201"
+               class="{{ $errors->has('code') ? 'err' : '' }}" required>
+        @error('code') <div class="field-err">{{ $message }}</div> @enderror
     </div>
-
-    {{-- Name --}}
-    <div class="col-md-8 mb-3">
-        <label class="form-label">Name <span class="text-danger">*</span></label>
-        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-               value="{{ old('name', $room->name ?? '') }}" required>
-        @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    <div class="field">
+        <label>Name <span class="req">*</span></label>
+        <input type="text" name="name" value="{{ old('name', $room->name ?? '') }}"
+               class="{{ $errors->has('name') ? 'err' : '' }}" required>
+        @error('name') <div class="field-err">{{ $message }}</div> @enderror
     </div>
 </div>
 
-{{-- Type --}}
-<div class="mb-3">
-    <label class="form-label">Type <span class="text-danger">*</span></label>
-    <select name="type" class="form-select @error('type') is-invalid @enderror" required>
+<div class="field">
+    <label>Type <span class="req">*</span></label>
+    <select name="type" class="{{ $errors->has('type') ? 'err' : '' }}" required>
         @foreach(['classroom','office','lab','restroom','other'] as $t)
             <option value="{{ $t }}"
                 {{ old('type', $room->type ?? '') === $t ? 'selected' : '' }}>
@@ -47,21 +39,19 @@
             </option>
         @endforeach
     </select>
-    @error('type') <div class="invalid-feedback">{{ $message }}</div> @enderror
+    @error('type') <div class="field-err">{{ $message }}</div> @enderror
 </div>
 
-{{-- Description --}}
-<div class="mb-3">
-    <label class="form-label">Description</label>
-    <textarea name="description" class="form-control @error('description') is-invalid @enderror"
-              rows="3">{{ old('description', $room->description ?? '') }}</textarea>
-    @error('description') <div class="invalid-feedback">{{ $message }}</div> @enderror
+<div class="field">
+    <label>Description</label>
+    <textarea name="description" rows="3"
+              class="{{ $errors->has('description') ? 'err' : '' }}">{{ old('description', $room->description ?? '') }}</textarea>
+    @error('description') <div class="field-err">{{ $message }}</div> @enderror
 </div>
 
-{{-- Facilities --}}
-<div class="mb-3">
-    <label class="form-label">Facilities</label>
-    <div class="row g-2">
+<div class="field">
+    <label>Facilities</label>
+    <div class="check-grid">
         @foreach($facilities as $facility)
             @php
                 $checked = in_array(
@@ -69,16 +59,11 @@
                     old('facilities', isset($room) ? $room->facilities->pluck('id')->toArray() : [])
                 );
             @endphp
-            <div class="col-6 col-md-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox"
-                           name="facilities[]" value="{{ $facility->id }}"
-                           id="fac_{{ $facility->id }}" {{ $checked ? 'checked' : '' }}>
-                    <label class="form-check-label" for="fac_{{ $facility->id }}">
-                        {{ $facility->name }}
-                    </label>
-                </div>
-            </div>
+            <label class="check-item" style="text-transform:none; letter-spacing:0; font-size:13px; font-family:inherit;">
+                <input type="checkbox" name="facilities[]"
+                       value="{{ $facility->id }}" {{ $checked ? 'checked' : '' }}>
+                <span>{{ $facility->name }}</span>
+            </label>
         @endforeach
     </div>
 </div>

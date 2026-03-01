@@ -1,16 +1,18 @@
 @extends('layouts.admin')
-
 @section('title', 'Buildings')
-
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h5 class="fw-bold mb-0">Buildings</h5>
-    <a href="{{ route('admin.buildings.create') }}" class="btn btn-primary btn-sm">+ Add Building</a>
+
+<div class="page-header">
+    <div>
+        <h1>Buildings</h1>
+        <div class="sub">Campus building registry</div>
+    </div>
+    <a href="{{ route('admin.buildings.create') }}" class="btn btn-primary">+ Add Building</a>
 </div>
 
-<div class="card shadow-sm">
-    <table class="table table-hover mb-0">
-        <thead class="table-light">
+<div class="card table-wrap">
+    <table>
+        <thead>
             <tr>
                 <th>Code</th>
                 <th>Name</th>
@@ -24,21 +26,22 @@
             <tr>
                 <td><code>{{ $building->code }}</code></td>
                 <td>{{ $building->name }}</td>
-                <td>{{ $building->floors_count }}</td>
-                <td>{{ Str::limit($building->description, 60) }}</td>
-                <td class="text-end">
-                    <a href="{{ route('admin.buildings.edit', $building) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <td style="color:var(--txt-muted);">{{ $building->floors_count }}</td>
+                <td style="color:var(--txt-muted);">{{ Str::limit($building->description, 60) }}</td>
+                <td class="td-actions">
+                    <a href="{{ route('admin.buildings.edit', $building) }}" class="btn btn-ghost btn-sm">Edit</a>
                     <form method="POST" action="{{ route('admin.buildings.destroy', $building) }}"
-                          class="d-inline" onsubmit="return confirm('Delete this building?')">
+                          style="display:inline" onsubmit="return confirm('Delete this building?')">
                         @csrf @method('DELETE')
-                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>
         @empty
-            <tr><td colspan="5" class="text-center text-muted py-4">No buildings yet.</td></tr>
+            <tr class="empty-row"><td colspan="5">No buildings yet</td></tr>
         @endforelse
         </tbody>
     </table>
 </div>
+
 @endsection

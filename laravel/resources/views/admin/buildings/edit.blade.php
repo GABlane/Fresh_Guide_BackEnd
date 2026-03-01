@@ -1,20 +1,22 @@
 @extends('layouts.admin')
-
 @section('title', 'Edit Building')
-
 @section('content')
-<div class="mb-3">
-    <a href="{{ route('admin.buildings.index') }}" class="text-muted text-decoration-none">← Buildings</a>
+
+<div class="breadcrumb">
+    <a href="{{ route('admin.buildings.index') }}">Buildings</a>
+    <span class="sep">/</span> {{ $building->name }}
 </div>
-<div class="card shadow-sm p-4" style="max-width: 560px;">
-    <h5 class="fw-bold mb-4">Edit Building</h5>
+
+<div class="form-card form-wrap">
+    <h2>Edit Building</h2>
     <form method="POST" action="{{ route('admin.buildings.update', $building) }}">
         @csrf @method('PUT')
         @include('admin.buildings._form')
-        <div class="d-flex gap-2 mt-3">
+        <div class="form-actions">
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ route('admin.buildings.index') }}" class="btn btn-outline-secondary">Cancel</a>
+            <a href="{{ route('admin.buildings.index') }}" class="btn btn-ghost">Cancel</a>
         </div>
     </form>
 </div>
+
 @endsection

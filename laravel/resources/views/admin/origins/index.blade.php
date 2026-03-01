@@ -1,42 +1,37 @@
 @extends('layouts.admin')
-
-@section('title', 'Starts (Origins)')
-
+@section('title', 'Starts')
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h5 class="fw-bold mb-0">Starts (Origins)</h5>
-    <a href="{{ route('admin.origins.create') }}" class="btn btn-primary btn-sm">+ Add Start</a>
+
+<div class="page-header">
+    <div><h1>Starts (Origins)</h1><div class="sub">Fixed route starting points</div></div>
+    <a href="{{ route('admin.origins.create') }}" class="btn btn-primary">+ Add Start</a>
 </div>
 
-<div class="card shadow-sm">
-    <table class="table table-hover mb-0">
-        <thead class="table-light">
-            <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th></th>
-            </tr>
+<div class="card table-wrap">
+    <table>
+        <thead>
+            <tr><th>Code</th><th>Name</th><th>Description</th><th></th></tr>
         </thead>
         <tbody>
         @forelse($origins as $origin)
             <tr>
                 <td><code>{{ $origin->code }}</code></td>
                 <td>{{ $origin->name }}</td>
-                <td>{{ Str::limit($origin->description, 60) }}</td>
-                <td class="text-end">
-                    <a href="{{ route('admin.origins.edit', $origin) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <td style="color:var(--txt-muted);">{{ Str::limit($origin->description, 60) }}</td>
+                <td class="td-actions">
+                    <a href="{{ route('admin.origins.edit', $origin) }}" class="btn btn-ghost btn-sm">Edit</a>
                     <form method="POST" action="{{ route('admin.origins.destroy', $origin) }}"
-                          class="d-inline" onsubmit="return confirm('Delete this origin?')">
+                          style="display:inline" onsubmit="return confirm('Delete this origin?')">
                         @csrf @method('DELETE')
-                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>
         @empty
-            <tr><td colspan="4" class="text-center text-muted py-4">No origins yet.</td></tr>
+            <tr class="empty-row"><td colspan="4">No origins yet</td></tr>
         @endforelse
         </tbody>
     </table>
 </div>
+
 @endsection

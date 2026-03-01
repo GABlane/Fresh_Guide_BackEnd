@@ -1,44 +1,38 @@
 @extends('layouts.admin')
-
 @section('title', 'Routes')
-
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h5 class="fw-bold mb-0">Routes</h5>
-    <a href="{{ route('admin.routes.create') }}" class="btn btn-primary btn-sm">+ Add Route</a>
+
+<div class="page-header">
+    <div><h1>Routes</h1><div class="sub">Origin → destination step guides</div></div>
+    <a href="{{ route('admin.routes.create') }}" class="btn btn-primary">+ Add Route</a>
 </div>
 
-<div class="card shadow-sm">
-    <table class="table table-hover mb-0">
-        <thead class="table-light">
-            <tr>
-                <th>Name</th>
-                <th>Start</th>
-                <th>Destination</th>
-                <th>Steps</th>
-                <th></th>
-            </tr>
+<div class="card table-wrap">
+    <table>
+        <thead>
+            <tr><th>Name</th><th>Start</th><th>Destination</th><th>Steps</th><th></th></tr>
         </thead>
         <tbody>
         @forelse($routes as $route)
             <tr>
                 <td>{{ $route->name }}</td>
-                <td>{{ $route->origin->name ?? '—' }}</td>
-                <td>{{ $route->destinationRoom->name ?? '—' }}</td>
-                <td>{{ $route->steps_count ?? $route->steps->count() }}</td>
-                <td class="text-end">
-                    <a href="{{ route('admin.routes.edit', $route) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <td><code>{{ $route->origin->name ?? '—' }}</code></td>
+                <td style="color:var(--txt-muted);">{{ $route->destinationRoom->name ?? '—' }}</td>
+                <td style="color:var(--txt-muted);">{{ $route->steps->count() }}</td>
+                <td class="td-actions">
+                    <a href="{{ route('admin.routes.edit', $route) }}" class="btn btn-ghost btn-sm">Edit</a>
                     <form method="POST" action="{{ route('admin.routes.destroy', $route) }}"
-                          class="d-inline" onsubmit="return confirm('Delete this route and all its steps?')">
+                          style="display:inline" onsubmit="return confirm('Delete this route and all steps?')">
                         @csrf @method('DELETE')
-                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>
         @empty
-            <tr><td colspan="5" class="text-center text-muted py-4">No routes yet.</td></tr>
+            <tr class="empty-row"><td colspan="5">No routes yet</td></tr>
         @endforelse
         </tbody>
     </table>
 </div>
+
 @endsection
