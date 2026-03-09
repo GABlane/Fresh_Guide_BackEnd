@@ -4,16 +4,22 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
+
+    public const ROLE_ADMIN = 'admin';
+    public const ROLE_USER  = 'user';
 
     protected $fillable = [
         'name',
         'email',
         'password',
         'role',
+        'student_id',
+        'campus_code',
         'is_active',
         'last_login_at',
     ];
@@ -31,11 +37,11 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->role === self::ROLE_ADMIN;
     }
 
-    public function canEdit(): bool
+    public function isUser(): bool
     {
-        return in_array($this->role, ['admin', 'editor']);
+        return $this->role === self::ROLE_USER;
     }
 }
