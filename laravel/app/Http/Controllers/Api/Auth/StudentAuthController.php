@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class StudentAuthController extends Controller
 {
@@ -16,14 +19,19 @@ class StudentAuthController extends Controller
             'name'       => 'nullable|string|max:255',
         ]);
 
-        $campusCode = substr($request->student_id, -1);
+        $studentId = strtoupper(trim($request->student_id));
+        $campusCode = substr($studentId, -1);
+        $generatedEmail = Str::lower(str_replace('-', '.', $studentId)) . '@students.freshguide.local';
+        $studentRole = DB::getDriverName() === 'sqlite' ? 'viewer' : User::ROLE_USER;
 
         $user = User::firstOrCreate(
-            ['student_id' => $request->student_id],
+            ['student_id' => $studentId],
             [
-                'name'        => $request->name ?? $request->student_id,
+                'name'        => $request->name ?? $studentId,
+                'email'       => $generatedEmail,
+                'password'    => Hash::make(Str::random(40)),
                 'campus_code' => $campusCode,
-                'role'        => User::ROLE_USER,
+                'role'        => $studentRole,
                 'is_active'   => true,
             ]
         );
@@ -42,7 +50,7 @@ class StudentAuthController extends Controller
                     'student_id'  => $user->student_id,
                     'campus_code' => $user->campus_code,
                     'name'        => $user->name,
-                    'role'        => $user->role,
+                    'role'        => User::ROLE_USER,
                 ],
             ],
             'error' => null,
@@ -60,7 +68,7 @@ class StudentAuthController extends Controller
                 'student_id'  => $user->student_id,
                 'campus_code' => $user->campus_code,
                 'name'        => $user->name,
-                'role'        => $user->role,
+                'role'        => $user->isAdmin() ? User::ROLE_ADMIN : User::ROLE_USER,
             ],
             'error' => null,
         ]);

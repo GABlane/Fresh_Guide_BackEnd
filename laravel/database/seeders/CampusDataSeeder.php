@@ -27,19 +27,48 @@ class CampusDataSeeder extends Seeder
             'is_active'=> true,
         ]);
 
-        // ── Building ──────────────────────────────────────────────────────────
-        $building = Building::create([
-            'name'        => 'UCC Main Building',
+        // ── Buildings ─────────────────────────────────────────────────────────
+        $main = Building::create([
+            'name'        => 'UCC South Main Building',
             'code'        => 'MAIN',
-            'description' => 'Primary academic building of the UCC campus.',
+            'description' => 'Primary academic building',
+        ]);
+        Building::create([
+            'name'        => 'Court',
+            'code'        => 'COURT',
+            'description' => 'Open court area at the center of campus',
+        ]);
+        Building::create([
+            'name'        => 'Library',
+            'code'        => 'LIB',
+            'description' => 'Main campus library',
+        ]);
+        Building::create([
+            'name'        => 'Registrar',
+            'code'        => 'REG',
+            'description' => 'Student records and enrollment office',
+        ]);
+        Building::create([
+            'name'        => 'Entrance',
+            'code'        => 'ENT',
+            'description' => 'Main campus entrance',
+        ]);
+        Building::create([
+            'name'        => 'Exit',
+            'code'        => 'EXIT',
+            'description' => 'Main campus exit',
         ]);
 
-        // ── Floor ─────────────────────────────────────────────────────────────
-        $floor = Floor::create([
-            'building_id' => $building->id,
-            'number'      => 0,
-            'name'        => 'Ground Floor',
-        ]);
+        // ── Floors (Ground Floor per building) ───────────────────────────────
+        foreach (Building::all() as $b) {
+            Floor::create([
+                'building_id' => $b->id,
+                'number'      => 0,
+                'name'        => 'Ground Floor',
+            ]);
+        }
+
+        $floor = Floor::where('building_id', $main->id)->first();
 
         // ── Rooms ─────────────────────────────────────────────────────────────
         $room201 = Room::create([
