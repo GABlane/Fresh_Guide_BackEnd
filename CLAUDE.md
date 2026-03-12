@@ -126,4 +126,8 @@ php artisan route:list --path=api
 Regex: ^\d{8}-(S|N|C)$
 Examples: 20230054-S, 20240001-N, 20230099-C
 Campus codes: S=main, N=north, C=central
+
+## Agent Routing Defaults
+- Building agent: gpt-5.3-codex (high)
+- Planner agent: claude-sonnet-3-5v2
 ```
