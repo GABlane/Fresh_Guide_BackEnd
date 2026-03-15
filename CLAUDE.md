@@ -39,7 +39,7 @@ Campus navigation app backend. Laravel 11 API-only. No Blade views, no web admin
 | User | users | role: admin\|user; student_id nullable; password nullable for students |
 | Building | buildings | code unique |
 | Floor | floors | belongs to Building |
-| Room | rooms | belongs to Floor; type enum; many-to-many Facility |
+| Room | rooms | belongs to Floor; type enum; image_url + location fields; many-to-many Facility |
 | Facility | facilities | name + icon |
 | Origin | origins | navigation start point (entrance/lobby etc) |
 | CampusRoute | routes | origin → destination room |
@@ -67,6 +67,8 @@ POST   /api/admin/logout
 apiResource /api/admin/buildings
 apiResource /api/admin/floors
 apiResource /api/admin/rooms
+POST   /api/admin/rooms/{id}/image    — multipart image upload
+DELETE /api/admin/rooms/{id}/image   — remove room image
 apiResource /api/admin/facilities
 apiResource /api/admin/origins
 apiResource /api/admin/routes
@@ -84,6 +86,7 @@ app/Http/Controllers/
       BuildingController.php
       FloorController.php
       RoomController.php
+      RoomImageController.php      — upload/delete room images
       FacilityController.php
       OriginController.php
       RouteController.php
