@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Admin\FacilityController as AdminFacilityController
 use App\Http\Controllers\Api\Admin\FloorController as AdminFloorController;
 use App\Http\Controllers\Api\Admin\OriginController as AdminOriginController;
 use App\Http\Controllers\Api\Admin\PublishController;
+use App\Http\Controllers\Api\Admin\RoomImageController as AdminRoomImageController;
 use App\Http\Controllers\Api\Admin\RoomController as AdminRoomController;
 use App\Http\Controllers\Api\Admin\RouteController as AdminRouteController;
 use App\Http\Controllers\Api\SyncController;
@@ -44,6 +45,8 @@ Route::middleware(['auth:sanctum', 'admin.api'])->prefix('admin')->group(functio
     Route::apiResource('buildings', AdminBuildingController::class);
     Route::apiResource('floors',    AdminFloorController::class);
     Route::apiResource('rooms',     AdminRoomController::class);
+    Route::post('rooms/{room}/image', [AdminRoomImageController::class, 'upload']);
+    Route::delete('rooms/{room}/image', [AdminRoomImageController::class, 'destroy']);
     Route::apiResource('facilities', AdminFacilityController::class);
     Route::apiResource('origins',   AdminOriginController::class);
     Route::apiResource('routes',    AdminRouteController::class);
