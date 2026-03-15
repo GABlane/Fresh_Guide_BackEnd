@@ -71,6 +71,27 @@ class CampusDataSeeder extends Seeder
                 ['name' => 'Student Services', 'code' => 'MAIN-1-STUSVC', 'type' => 'office', 'description' => 'Student support and assistance desk.'],
                 ['name' => 'Finance Office', 'code' => 'MAIN-1-FIN', 'type' => 'office', 'description' => 'Tuition and payment concerns.'],
                 ['name' => 'Dean\'s Office', 'code' => 'MAIN-1-DEAN', 'type' => 'office', 'description' => 'Administrative office for the dean.'],
+                [
+                    'name' => 'Campus Court',
+                    'code' => 'COURT',
+                    'type' => 'other',
+                    'description' => 'Facilities: Covered court, seating, and sound support.\nHours: Mon-Sat 7:00 AM - 8:00 PM.\nBooking: Coordinate with Student Affairs for reservations.\nNotes: Multi-purpose events and sports area.',
+                    'location' => 'Campus Center',
+                ],
+                [
+                    'name' => 'Main Entrance',
+                    'code' => 'ENT',
+                    'type' => 'other',
+                    'description' => 'Campus Info: Main access point to UCC campus.\nDirectory: Refer to posted building map near guard desk.\nEmergency: Security assistance available at all times.\nNotes: Recommended starting point for directions.',
+                    'location' => 'Campus South Gate',
+                ],
+                [
+                    'name' => 'Main Exit',
+                    'code' => 'EXIT',
+                    'type' => 'other',
+                    'description' => 'Campus Info: Primary outbound route to city road.\nEmergency: Use this path for safe evacuation when advised.\nNotes: Recommended endpoint for departure guidance.',
+                    'location' => 'Campus South Gate',
+                ],
             ],
             2 => [
                 ['name' => 'Classroom 201', 'code' => 'MAIN-2-CR201', 'type' => 'classroom', 'description' => 'General classroom for lectures.'],
@@ -140,6 +161,18 @@ class CampusDataSeeder extends Seeder
         ]);
 
         Origin::create([
+            'name' => 'Main Entrance',
+            'code' => 'ENT',
+            'description' => 'Campus entrance origin point.',
+        ]);
+
+        Origin::create([
+            'name' => 'Main Exit',
+            'code' => 'EXIT',
+            'description' => 'Campus exit origin point.',
+        ]);
+
+        Origin::create([
             'name' => 'Stairwell A',
             'code' => 'STA',
             'description' => 'Stairway near the entrance side.',
@@ -179,7 +212,7 @@ class CampusDataSeeder extends Seeder
 
         DataVersion::create([
             'version' => 1,
-            'note' => 'UCC main building seed with 5 floors and room image support.',
+            'note' => 'UCC main building seed with 5 floors, room image support, and campus area rooms.',
             'published_by' => $admin->id,
             'published_at' => now(),
         ]);
