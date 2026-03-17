@@ -39,14 +39,37 @@ class Room extends Model
             return $this->image_url;
         }
 
-        $relativeUrl = Storage::disk('public')->url($this->image_url);
-        if (app()->bound('request')) {
-            $request = app('request');
-            if (method_exists($request, 'getSchemeAndHttpHost')) {
-                return rtrim($request->getSchemeAndHttpHost(), '/') . $relativeUrl;
-            }
+        $publicUrl = Storage::disk('public')->url($this->image_url);
+
+        if (! app()->bound('request')) {
+            return $publicUrl;
         }
 
-        return $relativeUrl;
+        $request = app('request');
+        if (! method_exists($request, 'getSchemeAndHttpHost')) {
+            return $publicUrl;
+        }
+
+        $host = rtrim($request->getSchemeAndHttpHost(), '/');
+
+        // If Storage::url already returned an absolute URL, only rewrite localhost-style hosts.
+        if (str_starts_with($publicUrl, 'http://') || str_starts_with($publicUrl, 'https://')) {
+            $parts = parse_url($publicUrl);
+            $urlHost = $parts['host'] ?? null;
+
+            if ($urlHost && in_array($urlHost, ['localhost', '127.0.0.1', '::1'], true)) {
+                $path = $parts['path'] ?? '';
+                $query = isset($parts['query']) ? ('?' . $parts['query']) : '';
+                return $host . $path . $query;
+            }
+
+            return $publicUrl;
+        }
+
+        if (! str_starts_with($publicUrl, '/')) {
+            $publicUrl = '/' . $publicUrl;
+        }
+
+        return $host . $publicUrl;
     }
 }
