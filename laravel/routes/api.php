@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\Admin\RouteController as AdminRouteController;
 use App\Http\Controllers\Api\SyncController;
 use App\Http\Controllers\Api\User\OriginController as UserOriginController;
 use App\Http\Controllers\Api\User\RoomController as UserRoomController;
+use App\Http\Controllers\Api\User\ScheduleController as UserScheduleController;
 use App\Http\Controllers\Api\User\RouteController as UserRouteController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('rooms/{room}',            [UserRoomController::class,   'show']);
     Route::get('origins',                 [UserOriginController::class, 'index']);
     Route::get('routes/{roomId}',         [UserRouteController::class,  'show']);
+    Route::get('schedules',               [UserScheduleController::class, 'index']);
+    Route::post('schedules',              [UserScheduleController::class, 'store']);
+    Route::put('schedules/{schedule}',    [UserScheduleController::class, 'update']);
+    Route::delete('schedules/{schedule}', [UserScheduleController::class, 'destroy']);
 });
 
 // ─── Admin (token + admin role) ───────────────────────────────────────────────
