@@ -11,7 +11,7 @@ class CampusRoute extends Model
 {
     protected $table = 'routes';
 
-    protected $fillable = ['origin_id', 'destination_room_id', 'name', 'description'];
+    protected $fillable = ['origin_id', 'destination_room_id', 'description', 'instruction'];
 
     public function origin(): BelongsTo
     {

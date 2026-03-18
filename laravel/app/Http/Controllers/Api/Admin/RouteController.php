@@ -21,8 +21,8 @@ class RouteController extends Controller
         $data = $request->validate([
             'origin_id'            => 'required|exists:origins,id',
             'destination_room_id'  => 'required|exists:rooms,id',
-            'name'                 => 'required|string|max:255',
             'description'          => 'nullable|string',
+            'instruction'          => 'nullable|string',
             'steps'                => 'nullable|array',
             'steps.*.order'        => 'required|integer|min:1',
             'steps.*.instruction'  => 'required|string',
@@ -49,8 +49,8 @@ class RouteController extends Controller
         $data = $request->validate([
             'origin_id'            => 'required|exists:origins,id',
             'destination_room_id'  => 'required|exists:rooms,id',
-            'name'                 => 'required|string|max:255',
             'description'          => 'nullable|string',
+            'instruction'          => 'nullable|string',
             'steps'                => 'nullable|array',
             'steps.*.order'        => 'required|integer|min:1',
             'steps.*.instruction'  => 'required|string',
