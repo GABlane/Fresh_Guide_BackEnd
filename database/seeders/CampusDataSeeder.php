@@ -78,7 +78,6 @@ class CampusDataSeeder extends Seeder
         $route = CampusRoute::create([
             'origin_id'           => $mainGate->id,
             'destination_room_id' => $room201->id,
-            'name'                => 'Main Gate to Room 201',
             'description'         => 'Shortest path from the main entrance to Room 201.',
         ]);
 
