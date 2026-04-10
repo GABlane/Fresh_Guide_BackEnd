@@ -136,9 +136,22 @@ class CampusDataSeeder extends Seeder
                 ['name' => 'Computer Laboratory 3', 'code' => 'MAIN-3-COMPLAB3', 'type' => 'lab', 'description' => 'Computer laboratory with workstations.'],
             ],
             4 => [
-                ['name' => 'LabTech Facility', 'code' => 'MAIN-4-LABTECH', 'type' => 'lab', 'description' => 'Laboratory technology workspace.'],
-                ['name' => 'Law Faculty Office', 'code' => 'MAIN-4-LAW', 'type' => 'office', 'description' => 'Law faculty office area.'],
-                ['name' => 'Law Classroom 401', 'code' => 'MAIN-4-LAW401', 'type' => 'classroom', 'description' => 'Law classroom.'],
+                // LEFT COLUMN ROOMS
+                ['name' => 'Lecture Room 411', 'code' => 'MAIN-4-LR411', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Early Childhood Simulation Room', 'code' => 'MAIN-4-EARLY-CHILD', 'type' => 'lab', 'description' => 'Early childhood education simulation laboratory.'],
+                ['name' => 'Lecture Room 408', 'code' => 'MAIN-4-LR408', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Physics Laboratory', 'code' => 'MAIN-4-PHYSICS-LAB', 'type' => 'lab', 'description' => 'Physics laboratory with scientific equipment.'],
+                ['name' => 'Lecture Room 404', 'code' => 'MAIN-4-LR404', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 402', 'code' => 'MAIN-4-LR402', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+
+                // RIGHT COLUMN ROOMS
+                ['name' => 'COE Council Office', 'code' => 'MAIN-4-COE-COUNCIL', 'type' => 'office', 'description' => 'College of Education council office.'],
+                ['name' => 'Educational Technology Laboratory', 'code' => 'MAIN-4-EDTECH-LAB', 'type' => 'lab', 'description' => 'Educational technology and multimedia laboratory.'],
+                ['name' => 'Biology Laboratory', 'code' => 'MAIN-4-BIO-LAB', 'type' => 'lab', 'description' => 'Biology laboratory with scientific equipment.'],
+                ['name' => 'Chemistry Laboratory', 'code' => 'MAIN-4-CHEM-LAB', 'type' => 'lab', 'description' => 'Chemistry laboratory with scientific equipment.'],
+                ['name' => 'College of Law Office', 'code' => 'MAIN-4-LAW-OFFICE', 'type' => 'office', 'description' => 'College of Law administrative office.'],
+                ['name' => 'Lecture Room 401', 'code' => 'MAIN-4-LR401', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'College of Education', 'code' => 'MAIN-4-COE', 'type' => 'office', 'description' => 'College of Education administrative office.'],
             ],
             5 => [
                 ['name' => 'V-48', 'code' => 'MAIN-5-V48', 'type' => 'classroom', 'description' => 'General classroom for lectures.', 'location' => 'Left Wing'],
