@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CampusDataSeeder::class,
+            RoomDescriptionSeeder::class,
         ]);
     }
 }
