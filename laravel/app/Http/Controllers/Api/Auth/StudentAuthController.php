@@ -46,11 +46,13 @@ class StudentAuthController extends Controller
             'data'    => [
                 'token' => $token,
                 'user'  => [
-                    'id'          => $user->id,
-                    'student_id'  => $user->student_id,
-                    'campus_code' => $user->campus_code,
-                    'name'        => $user->name,
-                    'role'        => User::ROLE_USER,
+                    'id'                => $user->id,
+                    'student_id'        => $user->student_id,
+                    'campus_code'       => $user->campus_code,
+                    'name'              => $user->name,
+                    'course_section'    => $user->course_section,
+                    'profile_photo_url' => $user->profile_photo_url,
+                    'role'              => User::ROLE_USER,
                 ],
             ],
             'error' => null,
@@ -64,11 +66,13 @@ class StudentAuthController extends Controller
         return response()->json([
             'success' => true,
             'data'    => [
-                'id'          => $user->id,
-                'student_id'  => $user->student_id,
-                'campus_code' => $user->campus_code,
-                'name'        => $user->name,
-                'role'        => $user->isAdmin() ? User::ROLE_ADMIN : User::ROLE_USER,
+                'id'                => $user->id,
+                'student_id'        => $user->student_id,
+                'campus_code'       => $user->campus_code,
+                'name'              => $user->name,
+                'course_section'    => $user->course_section,
+                'profile_photo_url' => $user->profile_photo_url,
+                'role'              => $user->isAdmin() ? User::ROLE_ADMIN : User::ROLE_USER,
             ],
             'error' => null,
         ]);

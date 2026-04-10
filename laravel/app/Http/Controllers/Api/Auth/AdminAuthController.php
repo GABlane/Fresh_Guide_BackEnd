@@ -56,10 +56,13 @@ class AdminAuthController extends Controller
             'data'    => [
                 'token' => $token,
                 'user'  => [
-                    'id'    => $user->id,
-                    'name'  => $user->name,
-                    'email' => $user->email,
-                    'role'  => $user->role,
+                    'id'                => $user->id,
+                    'name'              => $user->name,
+                    'email'             => $user->email,
+                    'student_id'        => $user->student_id,
+                    'course_section'    => $user->course_section,
+                    'profile_photo_url' => $user->profile_photo_url,
+                    'role'              => $user->role,
                 ],
             ],
             'error' => null,

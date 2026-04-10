@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Admin\RoomController as AdminRoomController;
 use App\Http\Controllers\Api\Admin\RouteController as AdminRouteController;
 use App\Http\Controllers\Api\SyncController;
 use App\Http\Controllers\Api\User\OriginController as UserOriginController;
+use App\Http\Controllers\Api\User\ProfileController as UserProfileController;
 use App\Http\Controllers\Api\User\RoomController as UserRoomController;
 use App\Http\Controllers\Api\User\ScheduleController as UserScheduleController;
 use App\Http\Controllers\Api\User\RouteController as UserRouteController;
@@ -31,6 +32,11 @@ Route::prefix('sync')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [StudentAuthController::class, 'logout']);
     Route::get('me',      [StudentAuthController::class, 'me']);
+
+    Route::get('profile', [UserProfileController::class, 'show']);
+    Route::put('profile', [UserProfileController::class, 'update']);
+    Route::post('profile/photo', [UserProfileController::class, 'uploadPhoto']);
+    Route::delete('profile/photo', [UserProfileController::class, 'deletePhoto']);
 
     // User read-only endpoints
     Route::get('rooms',                   [UserRoomController::class,   'index']);
