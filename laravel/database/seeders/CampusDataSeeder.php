@@ -66,11 +66,26 @@ class CampusDataSeeder extends Seeder
 
         $roomsByFloor = [
             1 => [
-                ['name' => 'Main Lobby', 'code' => 'MAIN-1-LOBBY', 'type' => 'other', 'description' => 'Main reception and waiting area.'],
-                ['name' => 'Registrar Office', 'code' => 'MAIN-1-REG', 'type' => 'office', 'description' => 'Handles enrollment and student records.'],
-                ['name' => 'Student Services', 'code' => 'MAIN-1-STUSVC', 'type' => 'office', 'description' => 'Student support and assistance desk.'],
-                ['name' => 'Finance Office', 'code' => 'MAIN-1-FIN', 'type' => 'office', 'description' => 'Tuition and payment concerns.'],
-                ['name' => 'Dean\'s Office', 'code' => 'MAIN-1-DEAN', 'type' => 'office', 'description' => 'Administrative office for the dean.'],
+                // LEFT COLUMN ROOMS
+                ['name' => 'Kitchen Lab', 'code' => 'KITCHEN_LAB', 'type' => 'lab', 'description' => 'Culinary and kitchen laboratory for hospitality management students.'],
+                ['name' => 'Bartender Lab', 'code' => 'BARTENDER_LAB', 'type' => 'lab', 'description' => 'Bartending and beverage laboratory for hospitality courses.'],
+                ['name' => 'Lecture Room 108', 'code' => '108', 'type' => 'classroom', 'description' => 'General classroom for lectures.'],
+                ['name' => 'Lecture Room 105', 'code' => '105', 'type' => 'classroom', 'description' => 'General classroom for lectures.'],
+                ['name' => 'Lecture Room 104', 'code' => '104', 'type' => 'classroom', 'description' => 'General classroom for lectures.'],
+                ['name' => 'IT Center', 'code' => 'IT_CENTER', 'type' => 'office', 'description' => 'Information Technology support and services center.'],
+                ['name' => 'Guidance Office', 'code' => 'GUIDANCE', 'type' => 'office', 'description' => 'Student counseling and guidance services.'],
+
+                // RIGHT COLUMN ROOMS
+                ['name' => 'PWD CR', 'code' => 'PWD_CR', 'type' => 'other', 'description' => 'Person with Disability comfort room.'],
+                ['name' => 'Lecture Room 109', 'code' => '109', 'type' => 'classroom', 'description' => 'Large lecture room for major classes.'],
+                ['name' => 'Faculty Room', 'code' => 'FACULTY', 'type' => 'office', 'description' => 'Faculty lounge and office area.'],
+                ['name' => 'Human Resource Office', 'code' => 'HR_OFFICE', 'type' => 'office', 'description' => 'Human resources and personnel management office.'],
+                ['name' => 'Finance and Accounting', 'code' => 'FINANCE', 'type' => 'office', 'description' => 'Finance and accounting department office.'],
+                ['name' => 'Photography Laboratory', 'code' => 'PHOTO_LAB', 'type' => 'lab', 'description' => 'Photography and multimedia laboratory.'],
+                ['name' => 'Criminology Department', 'code' => 'CRIMINOLOGY', 'type' => 'office', 'description' => 'Criminology department office and faculty area.'],
+                ['name' => 'Lecture Room 101', 'code' => '101', 'type' => 'classroom', 'description' => 'General classroom for lectures.'],
+
+                // CAMPUS AREA ROOMS (kept from original)
                 [
                     'name' => 'Campus Court',
                     'code' => 'COURT',

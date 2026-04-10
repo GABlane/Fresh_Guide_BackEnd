@@ -54,7 +54,7 @@ Route::middleware(['auth:sanctum', 'admin.api'])->prefix('admin')->group(functio
     Route::post('logout', [AdminAuthController::class, 'logout']);
 
     Route::apiResource('buildings', AdminBuildingController::class);
-    Route::apiResource('floors',    AdminFloorController::class);
+    Route::apiResource('floors',    AdminFloorController::class)->only(['index', 'show']); // Read-only: floors are fixed
     Route::apiResource('rooms',     AdminRoomController::class);
     Route::post('rooms/{room}/image', [AdminRoomImageController::class, 'upload']);
     Route::delete('rooms/{room}/image', [AdminRoomImageController::class, 'destroy']);
