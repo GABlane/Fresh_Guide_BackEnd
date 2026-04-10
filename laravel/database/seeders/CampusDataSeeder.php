@@ -126,9 +126,13 @@ class CampusDataSeeder extends Seeder
                 ['name' => 'Law Classroom 401', 'code' => 'MAIN-4-LAW401', 'type' => 'classroom', 'description' => 'Law classroom.'],
             ],
             5 => [
-                ['name' => 'Auditorium Court', 'code' => 'MAIN-5-AUDIT', 'type' => 'other', 'description' => 'Auditorium at the side near the entrance.', 'location' => 'Side A'],
-                ['name' => 'Psychology Classroom 501', 'code' => 'MAIN-5-PSY501', 'type' => 'classroom', 'description' => 'Psychology classroom in the far wing.', 'location' => 'Side B'],
-                ['name' => 'Psychology Classroom 502', 'code' => 'MAIN-5-PSY502', 'type' => 'classroom', 'description' => 'Psychology classroom in the far wing.', 'location' => 'Side B'],
+                ['name' => 'V-48', 'code' => 'MAIN-5-V48', 'type' => 'classroom', 'description' => 'General classroom for lectures.', 'location' => 'Left Wing'],
+                ['name' => 'V-46', 'code' => 'MAIN-5-V46', 'type' => 'classroom', 'description' => 'General classroom for lectures.', 'location' => 'Left Wing'],
+                ['name' => 'Industrial Arts Laboratory', 'code' => 'MAIN-5-INDARTS', 'type' => 'lab', 'description' => 'Industrial arts laboratory.', 'location' => 'Left Wing'],
+                ['name' => 'Speech Laboratory', 'code' => 'MAIN-5-SPEECH', 'type' => 'lab', 'description' => 'Speech and communication laboratory.', 'location' => 'Right Wing'],
+                ['name' => 'Craft / Sewing Laboratory', 'code' => 'MAIN-5-SEWING', 'type' => 'lab', 'description' => 'Craft and sewing laboratory.', 'location' => 'Right Wing'],
+                ['name' => 'Office', 'code' => 'MAIN-5-OFFICE', 'type' => 'office', 'description' => 'Office room on the right wing.', 'location' => 'Right Wing'],
+                ['name' => 'Auditorium', 'code' => 'MAIN-5-AUDIT', 'type' => 'other', 'description' => 'Main auditorium.', 'location' => 'Center Hall'],
             ],
         ];
 
