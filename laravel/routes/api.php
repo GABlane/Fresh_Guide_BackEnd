@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\Admin\RoomController as AdminRoomController;
 use App\Http\Controllers\Api\Admin\RouteController as AdminRouteController;
 use App\Http\Controllers\Api\SyncController;
 use App\Http\Controllers\Api\User\OriginController as UserOriginController;
+use App\Http\Controllers\Api\User\FavoriteController as UserFavoriteController;
 use App\Http\Controllers\Api\User\ProfileController as UserProfileController;
 use App\Http\Controllers\Api\User\RoomController as UserRoomController;
 use App\Http\Controllers\Api\User\ScheduleController as UserScheduleController;
@@ -43,6 +44,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('rooms/{room}',            [UserRoomController::class,   'show']);
     Route::get('origins',                 [UserOriginController::class, 'index']);
     Route::get('routes/{roomId}',         [UserRouteController::class,  'show']);
+    Route::get('favorites',               [UserFavoriteController::class, 'index']);
+    Route::put('favorites/{roomId}',      [UserFavoriteController::class, 'save']);
+    Route::delete('favorites/{roomId}',   [UserFavoriteController::class, 'destroy']);
     Route::get('schedules',               [UserScheduleController::class, 'index']);
     Route::post('schedules',              [UserScheduleController::class, 'store']);
     Route::put('schedules/{schedule}',    [UserScheduleController::class, 'update']);
