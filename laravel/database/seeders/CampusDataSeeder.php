@@ -109,10 +109,21 @@ class CampusDataSeeder extends Seeder
                 ],
             ],
             2 => [
-                ['name' => 'Classroom 201', 'code' => 'MAIN-2-CR201', 'type' => 'classroom', 'description' => 'General classroom for lectures.'],
-                ['name' => 'Classroom 202', 'code' => 'MAIN-2-CR202', 'type' => 'classroom', 'description' => 'General classroom for lectures.'],
-                ['name' => 'Classroom 203', 'code' => 'MAIN-2-CR203', 'type' => 'classroom', 'description' => 'General classroom for lectures.'],
-                ['name' => 'Lecture Room 221', 'code' => 'MAIN-2-LR221', 'type' => 'classroom', 'description' => 'Larger room for major classes.'],
+                // LEFT COLUMN ROOMS
+                ['name' => 'Lecture Room 211', 'code' => 'MAIN-2-LR211', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 209', 'code' => 'MAIN-2-LR209', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 207', 'code' => 'MAIN-2-LR207', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 205', 'code' => 'MAIN-2-LR205', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 203', 'code' => 'MAIN-2-LR203', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 201', 'code' => 'MAIN-2-LR201', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+
+                // RIGHT COLUMN ROOMS
+                ['name' => 'Lecture Room 212', 'code' => 'MAIN-2-LR212', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 210', 'code' => 'MAIN-2-LR210', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 208', 'code' => 'MAIN-2-LR208', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 206', 'code' => 'MAIN-2-LR206', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 204', 'code' => 'MAIN-2-LR204', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 202', 'code' => 'MAIN-2-LR202', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
             ],
             3 => [
                 // LEFT COLUMN ROOMS
