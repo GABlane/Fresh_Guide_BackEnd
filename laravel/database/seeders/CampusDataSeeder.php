@@ -115,10 +115,25 @@ class CampusDataSeeder extends Seeder
                 ['name' => 'Lecture Room 221', 'code' => 'MAIN-2-LR221', 'type' => 'classroom', 'description' => 'Larger room for major classes.'],
             ],
             3 => [
-                ['name' => 'Computer Laboratory', 'code' => 'MAIN-3-COMPLAB', 'type' => 'lab', 'description' => 'Main computer laboratory.'],
-                ['name' => 'MIS Department', 'code' => 'MAIN-3-MIS', 'type' => 'office', 'description' => 'Management Information Systems office.'],
-                ['name' => 'Computer Science Department', 'code' => 'MAIN-3-CS', 'type' => 'office', 'description' => 'Computer Science department office.'],
-                ['name' => 'Server Room', 'code' => 'MAIN-3-SERVER', 'type' => 'other', 'description' => 'Network and server equipment room.'],
+                // LEFT COLUMN ROOMS
+                ['name' => 'CBA Coordinators Office', 'code' => 'MAIN-3-CBA-COORD', 'type' => 'office', 'description' => 'College of Business Administration coordinators office.'],
+                ['name' => 'CBA Dean\'s Office', 'code' => 'MAIN-3-CBA-DEAN', 'type' => 'office', 'description' => 'Office of the Dean of the College of Business Administration.'],
+                ['name' => 'Lecture Room 310', 'code' => 'MAIN-3-LR310', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 308', 'code' => 'MAIN-3-LR308', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Office of the CLAS Program Coordinators', 'code' => 'MAIN-3-CLAS-COORD', 'type' => 'office', 'description' => 'College of Liberal Arts and Sciences program coordinators office.'],
+                ['name' => 'Sound Engineering Laboratory', 'code' => 'MAIN-3-SOUND-LAB', 'type' => 'lab', 'description' => 'Sound engineering and audio production laboratory.'],
+                ['name' => 'Lecture Room 304', 'code' => 'MAIN-3-LR304', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+                ['name' => 'Lecture Room 302', 'code' => 'MAIN-3-LR302', 'type' => 'classroom', 'description' => 'General lecture room for classes.'],
+
+                // RIGHT COLUMN ROOMS
+                ['name' => 'Office of Student Affairs and Services', 'code' => 'MAIN-3-STUDENT-AFFAIRS', 'type' => 'office', 'description' => 'Student affairs and services office.'],
+                ['name' => 'MIS Data Center', 'code' => 'MAIN-3-MIS-DATA', 'type' => 'lab', 'description' => 'Management Information Systems data center.'],
+                ['name' => 'Computer Studies Department', 'code' => 'MAIN-3-CS-DEPT', 'type' => 'office', 'description' => 'Computer Studies department office.'],
+                ['name' => 'Multimedia Room', 'code' => 'MAIN-3-MULTIMEDIA', 'type' => 'lab', 'description' => 'Multimedia production and editing room.'],
+                ['name' => 'Lab Tech Room', 'code' => 'MAIN-3-LABTECH', 'type' => 'lab', 'description' => 'Laboratory technology support room.'],
+                ['name' => 'Computer Laboratory 1', 'code' => 'MAIN-3-COMPLAB1', 'type' => 'lab', 'description' => 'Computer laboratory with workstations.'],
+                ['name' => 'Computer Laboratory 2', 'code' => 'MAIN-3-COMPLAB2', 'type' => 'lab', 'description' => 'Computer laboratory with workstations.'],
+                ['name' => 'Computer Laboratory 3', 'code' => 'MAIN-3-COMPLAB3', 'type' => 'lab', 'description' => 'Computer laboratory with workstations.'],
             ],
             4 => [
                 ['name' => 'LabTech Facility', 'code' => 'MAIN-4-LABTECH', 'type' => 'lab', 'description' => 'Laboratory technology workspace.'],
