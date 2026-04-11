@@ -94,6 +94,20 @@ class CampusDataSeeder extends Seeder
                     'location' => 'Campus Center',
                 ],
                 [
+                    'name' => 'Registrar',
+                    'code' => 'REG',
+                    'type' => 'other',
+                    'description' => 'Campus Info: Registrar services for records and enrollment concerns.\nHours: Mon-Fri 8:00 AM - 5:00 PM.\nDirectory: Located near the main court side.\nNotes: Prepare school ID and forms before queueing.',
+                    'location' => 'Campus Grounds',
+                ],
+                [
+                    'name' => 'Library',
+                    'code' => 'LIB',
+                    'type' => 'other',
+                    'description' => 'Campus Info: Main library for study, references, and academic resources.\nHours: Mon-Sat 8:00 AM - 6:00 PM.\nDirectory: Library wing beside the court area.\nNotes: Observe silence and borrowing policies.',
+                    'location' => 'Campus Grounds',
+                ],
+                [
                     'name' => 'Main Entrance',
                     'code' => 'ENT',
                     'type' => 'other',
@@ -242,7 +256,7 @@ class CampusDataSeeder extends Seeder
             'description' => 'Stairway near the far wing.',
         ]);
 
-        $registrar = Room::where('code', 'MAIN-1-REG')->first();
+        $registrar = Room::where('code', 'REG')->first();
         if ($registrar) {
             $route = CampusRoute::create([
                 'origin_id' => $mainGate->id,
@@ -255,6 +269,31 @@ class CampusDataSeeder extends Seeder
                 [1, 'Enter through Main Gate and walk straight to the Main Building entrance.', 'straight', 'Main Building'],
                 [2, 'Proceed to the lobby and keep right.', 'right', 'Main Lobby'],
                 [3, 'Registrar Office is on your right side.', 'right', 'Registrar Office'],
+            ];
+
+            foreach ($steps as [$order, $instruction, $direction, $landmark]) {
+                RouteStep::create([
+                    'route_id' => $route->id,
+                    'order' => $order,
+                    'instruction' => $instruction,
+                    'direction' => $direction,
+                    'landmark' => $landmark,
+                ]);
+            }
+        }
+
+        $library = Room::where('code', 'LIB')->first();
+        if ($library) {
+            $route = CampusRoute::create([
+                'origin_id' => $mainGate->id,
+                'destination_room_id' => $library->id,
+                'description' => 'Direct walking route from main gate to library.',
+            ]);
+
+            $steps = [
+                [1, 'Enter through Main Gate and walk straight to the campus court lane.', 'straight', 'Campus Court'],
+                [2, 'Continue to the right-side library wing.', 'right', 'Library Wing'],
+                [3, 'Library is ahead on your right.', 'right', 'Library'],
             ];
 
             foreach ($steps as [$order, $instruction, $direction, $landmark]) {

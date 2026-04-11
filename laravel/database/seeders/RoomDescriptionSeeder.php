@@ -65,6 +65,8 @@ class RoomDescriptionSeeder extends Seeder
             'CRIMINOLOGY' => 'The Criminology Department office supports program coordination and student concerns. Advising, announcements, and course-related endorsements are facilitated here. Visit during office hours for official transactions.',
             '101' => 'Lecture Room 101 is a primary classroom near ground-floor access points. It is used for regular classes and introductory subject blocks. Verify section assignment before occupying the room.',
             'COURT' => 'The Campus Court is a multi-purpose space for sports, events, and assemblies. Departments may use this area for programs, practices, and student activities. Coordinate reservations through the proper office when required.',
+            'REG' => 'The Registrar area assists with enrollment records, verification requests, and academic document processing. Students may coordinate forms and official school record concerns here. Bring valid identification and complete requirements before your visit.',
+            'LIB' => 'The Library is a campus study and reference area for reading, research, and academic resource access. Students may use this space for quiet study and approved borrowing services. Follow library rules for silence, materials handling, and return schedules.',
             'ENT' => 'This is the main entrance point for students, staff, and visitors. It is the recommended starting location for wayfinding and route guidance. Follow campus security screening procedures upon entry.',
             'EXIT' => 'This is the primary exit route leading out of the campus. It is used for normal departure flow and guided evacuation routing when needed. Observe traffic and safety instructions while leaving.',
 
